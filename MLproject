@@ -1,0 +1,7 @@
+name: Ass3
+
+conda_env: Ass3.yaml
+
+entry_points:
+  main:
+    command: "python LSDA_Template.py"
