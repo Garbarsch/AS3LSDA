@@ -4,7 +4,7 @@ import mlflow
 ## NOTE: You can use Microsoft Azure Machine Learning Studio for experiment tracking. Follow assignment description and uncomment below for that (you might also need to pip azureml (pip install azureml-core):
 from azureml.core import Workspace
 #ws = Workspace.from_config()
-Workspace(subscription_id = "635b8853-8742-4156-907d-5f83ad2ada58", resource_group="LSDA_group", workspace_name="LSDAML", auth=None, _location=None, _disable_service_check=False, _workspace_id=None, sku='basic', tags=None, _cloud='AzureCloud')
+ws = Workspace(subscription_id = "635b8853-8742-4156-907d-5f83ad2ada58", resource_group="LSDA_group", workspace_name="LSDAML", auth=None, _location=None, _disable_service_check=False, _workspace_id=None, sku='basic', tags=None, _cloud='AzureCloud')
 mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 
 ## NOTE: Optionally, you can use the public tracking server.  Do not use it for data you cannot afford to lose. See note in assignment text. If you leave this line as a comment, mlflow will save the runs to your local filesystem.
@@ -29,12 +29,17 @@ from sklearn.neighbors import KNeighborsRegressor
 from sklearn.svm import SVR
 from sklearn.model_selection import TimeSeriesSplit
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.ensemble import RandomForestRegressor
+
 
 # Start a run
 # TODO: Set a descriptive name. This is optional, but makes it easier to keep track of your runs.
-with mlflow.start_run(run_name="<descriptive name>"):
+with mlflow.start_run(run_name="<Test>"):
     # TODO: Insert path to dataset
-    df = pd.read_json("path/to/dataset.json", orient="split")
+    df = pd.read_json("./dataset.json", orient="split")
 
     # TODO: Handle missing data
     class MissingValues(BaseEstimator, TransformerMixin):
@@ -75,7 +80,7 @@ with mlflow.start_run(run_name="<descriptive name>"):
     
     for train, test in TimeSeriesSplit(number_of_splits).split(X,y):
         pipeline.fit(X.iloc[train],y.iloc[train])
-        predictions = pipeline.predict(X.iloc[test])
+        predictions = pipeline.predict(X.iloc[tetexst])
         truth = y.iloc[test]
 
         from matplotlib import pyplot as plt 
