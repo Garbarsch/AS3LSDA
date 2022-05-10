@@ -26,13 +26,13 @@ mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 ## NOTE: Optionally, you can use the public tracking server.  Do not use it for data you cannot afford to lose. See note in assignment text. If you leave this line as a comment, mlflow will save the runs to your local filesystem.
 
 # mlflow.set_tracking_uri("http://training.itu.dk:5000/")
+print("MLFlow Tracking URI:", MLFLOW_TRACKING_URI)
 
-
-{
-    "subscription_id": "635b8853-8742-4156-907d-5f83ad2ada58",
-    "resource_group": "LSDA_group",
-    "workspace_name": "LSDAML"
-}
+#{
+#    "subscription_id": "635b8853-8742-4156-907d-5f83ad2ada58",
+#    "resource_group": "LSDA_group",
+#    "workspace_name": "LSDAML"
+#}
 
 # TODO: Set the experiment name
 mlflow.set_experiment(experiment_name)
