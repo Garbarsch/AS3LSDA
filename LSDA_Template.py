@@ -19,7 +19,7 @@ mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 }
 
 # TODO: Set the experiment name
-mlflow.set_experiment("<Garb> - <Assignment3")
+mlflow.set_experiment("Garb1")
 
 # Import some of the sklearn modules you are likely to use.
 from sklearn.pipeline import Pipeline
