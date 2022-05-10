@@ -12,9 +12,9 @@ mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
     
 # mlflow.set_tracking_uri("http://training.itu.dk:5000/")
 #print("MLFlow Tracking URI:", MLFLOW_TRACKING_URI)
-
+print(ws.get_mlflow_tracking_uri())
 # TODO: Set the experiment name
-mlflow.set_experiment("test")
+mlflow.set_experiment("test1")
 
 # Import some of the sklearn modules you are likely to use.
 from sklearn.pipeline import Pipeline
@@ -32,7 +32,7 @@ from sklearn.ensemble import RandomForestRegressor
 
 # Start a run
 # TODO: Set a descriptive name. This is optional, but makes it easier to keep track of your runs.
-with mlflow.start_run(run_name="firsttest"):
+with mlflow.start_run(run_name="firsttest1"):
     # TODO: Insert path to dataset
     df = pd.read_json("./dataset.json", orient="split")
     
