@@ -7,7 +7,6 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 
 
-mlflow.set_tracking_uri("azureml://japaneast.api.azureml.ms/mlflow/v1.0/subscriptions/635b8853-8742-4156-907d-5f83ad2ada58/resourceGroups/LSDA_group/providers/Microsoft.MachineLearningServices/workspaces/LSDAML")
 mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 ## NOTE: Optionally, you can use the public tracking server.  Do not use it for data you cannot afford to lose. See note in assignment text. If you leave this line as a comment, mlflow will save the runs to your local filesystem.
     
