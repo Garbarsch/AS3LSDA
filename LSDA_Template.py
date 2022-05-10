@@ -7,30 +7,16 @@ from random import random
 from azureml.core import Workspace
 #ws = Workspace.from_config()
 #ws = Workspace.from_config()
-#ws = Workspace(subscription_id = "635b8853-8742-4156-907d-5f83ad2ada58", resource_group="LSDA_group", workspace_name="LSDAML", auth=None, _location=None, _disable_service_check=False, _workspace_id=None, sku='basic', tags=None, _cloud='AzureCloud')
-#mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
-from azureml.mlflow import register_model
+ws = Workspace(subscription_id = "635b8853-8742-4156-907d-5f83ad2ada58", resource_group="LSDA_group", workspace_name="LSDAML", auth=None, _location=None, _disable_service_check=False, _workspace_id=None, sku='basic', tags=None, _cloud='AzureCloud')
+mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
+#from azureml.mlflow import register_model
 experiment_name = 'experiment_with_mlflow'
+import os
+os.environ[MLFLOW_TRACKING_URI] = "azureml://japaneast.api.azureml.ms/mlflow/v1.0/subscriptions/635b8853-8742-4156-907d-5f83ad2ada58/resourceGroups/LSDA_group/providers/Microsoft.MachineLearningServices/workspaces/LSDAML"
 
-def get_azureml_mlflow_tracking_uri(region, subscription_id, resource_group, workspace):
-    return "azureml://{}.api.azureml.ms/mlflow/v1.0/subscriptions/{}/resourceGroups/{}/providers/Microsoft.MachineLearningServices/workspaces/{}".format(region, subscription_id, resource_group, workspace)
 
-region='japaneast' ## example: westus
-subscription_id = '635b8853-8742-4156-907d-5f83ad2ada58' ## example: 11111111-1111-1111-1111-111111111111
-resource_group = 'LSDA_group' ## example: myresourcegroup
-workspace = 'LSDAML' ## example: myworkspacename
-
-MLFLOW_TRACKING_URI = get_azureml_mlflow_tracking_uri(region, subscription_id, resource_group, workspace)
-
-## Set the MLFLOW TRACKING URI
-mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 
 ## NOTE: Optionally, you can use the public tracking server.  Do not use it for data you cannot afford to lose. See note in assignment text. If you leave this line as a comment, mlflow will save the runs to your local filesystem.
-with mlflow.start_run() as mlflow_run:
-    mlflow.log_param("hello_param", "world")
-    mlflow.log_metric("hello_metric", random())
-    os.system(f"echo 'hello world' > helloworld.txt")
-    mlflow.log_artifact("helloworld.txt")
     
 # mlflow.set_tracking_uri("http://training.itu.dk:5000/")
 print("MLFlow Tracking URI:", MLFLOW_TRACKING_URI)
