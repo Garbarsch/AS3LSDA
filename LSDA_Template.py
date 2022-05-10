@@ -1,37 +1,21 @@
 import pandas as pd
 import mlflow
-import os
-from random import random
-from azureml.core.authentication import InteractiveLoginAuthentication
-#ia = InteractiveLoginAuthentication(tenant_id='bea229b6-7a08-4086-b44c-71f57f716bdb')
-interactive_auth = InteractiveLoginAuthentication()
+
 
 ## NOTE: You can use Microsoft Azure Machine Learning Studio for experiment tracking. Follow assignment description and uncomment below for that (you might also need to pip azureml (pip install azureml-core):
 from azureml.core import Workspace
-#ws = Workspace.from_config()
-#ws = Workspace.from_config()
-ws = Workspace(subscription_id = "635b8853-8742-4156-907d-5f83ad2ada58", resource_group="LSDA_group", workspace_name="LSDAML", auth=interactive_auth, _location=None, _disable_service_check=False, _workspace_id=None, sku='basic', tags=None, _cloud='AzureCloud')
-#mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
-#from azureml.mlflow import register_model
-experiment_name = 'experiment_with_mlflow'
-#import os
-#os.environ[MLFLOW_TRACKING_URI] = "azureml://japaneast.api.azureml.ms/mlflow/v1.0/subscriptions/635b8853-8742-4156-907d-5f83ad2ada58/resourceGroups/LSDA_group/providers/Microsoft.MachineLearningServices/workspaces/LSDAML"
+ws = Workspace.from_config()
+
 
 mlflow.set_tracking_uri("azureml://japaneast.api.azureml.ms/mlflow/v1.0/subscriptions/635b8853-8742-4156-907d-5f83ad2ada58/resourceGroups/LSDA_group/providers/Microsoft.MachineLearningServices/workspaces/LSDAML")
-
+mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 ## NOTE: Optionally, you can use the public tracking server.  Do not use it for data you cannot afford to lose. See note in assignment text. If you leave this line as a comment, mlflow will save the runs to your local filesystem.
     
 # mlflow.set_tracking_uri("http://training.itu.dk:5000/")
 #print("MLFlow Tracking URI:", MLFLOW_TRACKING_URI)
 
-#{
-#    "subscription_id": "635b8853-8742-4156-907d-5f83ad2ada58",
-#    "resource_group": "LSDA_group",
-#    "workspace_name": "LSDAML"
-#}
-
 # TODO: Set the experiment name
-mlflow.set_experiment(experiment_name)
+mlflow.set_experiment("test)
 
 # Import some of the sklearn modules you are likely to use.
 from sklearn.pipeline import Pipeline
@@ -49,7 +33,7 @@ from sklearn.ensemble import RandomForestRegressor
 
 # Start a run
 # TODO: Set a descriptive name. This is optional, but makes it easier to keep track of your runs.
-with mlflow.start_run(run_name="Test"):
+with mlflow.start_run(run_name="firsttest"):
     # TODO: Insert path to dataset
     df = pd.read_json("./dataset.json", orient="split")
 
