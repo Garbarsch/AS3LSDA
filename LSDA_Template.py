@@ -1,5 +1,7 @@
 import pandas as pd
 import mlflow
+import os
+from random import random
 
 ## NOTE: You can use Microsoft Azure Machine Learning Studio for experiment tracking. Follow assignment description and uncomment below for that (you might also need to pip azureml (pip install azureml-core):
 from azureml.core import Workspace
@@ -24,7 +26,12 @@ MLFLOW_TRACKING_URI = get_azureml_mlflow_tracking_uri(region, subscription_id, r
 mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 
 ## NOTE: Optionally, you can use the public tracking server.  Do not use it for data you cannot afford to lose. See note in assignment text. If you leave this line as a comment, mlflow will save the runs to your local filesystem.
-
+with mlflow.start_run() as mlflow_run:
+    mlflow.log_param("hello_param", "world")
+    mlflow.log_metric("hello_metric", random())
+    os.system(f"echo 'hello world' > helloworld.txt")
+    mlflow.log_artifact("helloworld.txt")
+    
 # mlflow.set_tracking_uri("http://training.itu.dk:5000/")
 print("MLFlow Tracking URI:", MLFLOW_TRACKING_URI)
 
