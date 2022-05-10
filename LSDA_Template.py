@@ -84,7 +84,7 @@ with mlflow.start_run(run_name="firsttest"):
     
     for train, test in TimeSeriesSplit(number_of_splits).split(X,y):
         pipeline.fit(X.iloc[train],y.iloc[train])
-        predictions = pipeline.predict(X.iloc[tetexst])
+        predictions = pipeline.predict(X.iloc[test])
         truth = y.iloc[test]
 
         from matplotlib import pyplot as plt 
