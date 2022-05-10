@@ -35,6 +35,15 @@ from sklearn.ensemble import RandomForestRegressor
 with mlflow.start_run(run_name="firsttest"):
     # TODO: Insert path to dataset
     df = pd.read_json("./dataset.json", orient="split")
+    
+    labelEnconder = LabelEncoder()
+    dirColumn = df["Direction"]
+    df["Direction"] = labelEnconder.fit_transform(dirColumn) 
+
+
+##group by 3H time interval
+    df = pd.DataFrame(df.groupby("Source_time").mean(), columns=df.columns)
+    df = df.drop(['Source_time'], axis= 1)
 
     # TODO: Handle missing data
     class MissingValues(BaseEstimator, TransformerMixin):
@@ -68,7 +77,7 @@ with mlflow.start_run(run_name="firsttest"):
     X = df[["Speed","Direction"]]
     y = df["Total"]
 
-    number_of_splits = 5
+    number_of_splits = 2
 
     #TODO: Log your parameters. What parameters are important to log?
     #HINT: You can get access to the transformers in your pipeline using `pipeline.steps`
