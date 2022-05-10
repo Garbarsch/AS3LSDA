@@ -4,7 +4,8 @@ import mlflow
 ## NOTE: You can use Microsoft Azure Machine Learning Studio for experiment tracking. Follow assignment description and uncomment below for that (you might also need to pip azureml (pip install azureml-core):
 from azureml.core import Workspace
 #ws = Workspace.from_config()
-ws = Workspace(subscription_id = "635b8853-8742-4156-907d-5f83ad2ada58", resource_group="LSDA_group", workspace_name="LSDAML", auth=None, _location=None, _disable_service_check=False, _workspace_id=None, sku='basic', tags=None, _cloud='AzureCloud')
+ws = Workspace.from_config()
+#ws = Workspace(subscription_id = "635b8853-8742-4156-907d-5f83ad2ada58", resource_group="LSDA_group", workspace_name="LSDAML", auth=None, _location=None, _disable_service_check=False, _workspace_id=None, sku='basic', tags=None, _cloud='AzureCloud')
 mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 with mlflow.start_run() as run:
     log_param("param1", randint(0, 100))
