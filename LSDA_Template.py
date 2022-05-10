@@ -13,7 +13,7 @@ experiment_name = 'experiment_with_mlflow'
 def get_azureml_mlflow_tracking_uri(region, subscription_id, resource_group, workspace):
     return "azureml://{}.api.azureml.ms/mlflow/v1.0/subscriptions/{}/resourceGroups/{}/providers/Microsoft.MachineLearningServices/workspaces/{}".format(region, subscription_id, resource_group, workspace)
 
-region='Japan East' ## example: westus
+region='japaneast' ## example: westus
 subscription_id = '635b8853-8742-4156-907d-5f83ad2ada58' ## example: 11111111-1111-1111-1111-111111111111
 resource_group = 'LSDA_group' ## example: myresourcegroup
 workspace = 'LSDAML' ## example: myworkspacename
