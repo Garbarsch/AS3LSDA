@@ -14,12 +14,12 @@ experiment_name = 'experiment_with_mlflow'
 import os
 os.environ[MLFLOW_TRACKING_URI] = "azureml://japaneast.api.azureml.ms/mlflow/v1.0/subscriptions/635b8853-8742-4156-907d-5f83ad2ada58/resourceGroups/LSDA_group/providers/Microsoft.MachineLearningServices/workspaces/LSDAML"
 
-
+mlflow.set_tracking_uri("azureml://japaneast.api.azureml.ms/mlflow/v1.0/subscriptions/635b8853-8742-4156-907d-5f83ad2ada58/resourceGroups/LSDA_group/providers/Microsoft.MachineLearningServices/workspaces/LSDAML")
 
 ## NOTE: Optionally, you can use the public tracking server.  Do not use it for data you cannot afford to lose. See note in assignment text. If you leave this line as a comment, mlflow will save the runs to your local filesystem.
     
 # mlflow.set_tracking_uri("http://training.itu.dk:5000/")
-print("MLFlow Tracking URI:", MLFLOW_TRACKING_URI)
+#print("MLFlow Tracking URI:", MLFLOW_TRACKING_URI)
 
 #{
 #    "subscription_id": "635b8853-8742-4156-907d-5f83ad2ada58",
