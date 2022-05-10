@@ -15,7 +15,7 @@ mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 #print("MLFlow Tracking URI:", MLFLOW_TRACKING_URI)
 
 # TODO: Set the experiment name
-mlflow.set_experiment("test)
+mlflow.set_experiment("test")
 
 # Import some of the sklearn modules you are likely to use.
 from sklearn.pipeline import Pipeline
