@@ -78,7 +78,7 @@ with mlflow.start_run(run_name="firsttest3"):
     X = df[["Speed","Direction"]]
     y = df["Total"]
 
-    number_of_splits = 2
+    number_of_splits = 5
 
     #TODO: Log your parameters. What parameters are important to log?
     #HINT: You can get access to the transformers in your pipeline using `pipeline.steps`
