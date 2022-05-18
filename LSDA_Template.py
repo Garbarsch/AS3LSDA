@@ -14,7 +14,7 @@ mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 #print("MLFlow Tracking URI:", MLFLOW_TRACKING_URI)
 print(ws.get_mlflow_tracking_uri())
 # TODO: Set the experiment name
-mlflow.set_experiment("test4")
+mlflow.set_experiment("test5")
 
 # Import some of the sklearn modules you are likely to use.
 from sklearn.pipeline import Pipeline
@@ -32,7 +32,7 @@ from sklearn.ensemble import RandomForestRegressor
 
 # Start a run
 # TODO: Set a descriptive name. This is optional, but makes it easier to keep track of your runs.
-with mlflow.start_run(run_name="firsttest4"):
+with mlflow.start_run(run_name="firsttest5"):
     # TODO: Insert path to dataset
     df = pd.read_json("./dataset.json", orient="split")
     
@@ -78,7 +78,7 @@ with mlflow.start_run(run_name="firsttest4"):
     X = df[["Speed","Direction"]]
     y = df["Total"]
 
-    number_of_splits = 5
+    number_of_splits = 7
 
     #TODO: Log your parameters. What parameters are important to log?
     #HINT: You can get access to the transformers in your pipeline using `pipeline.steps`
